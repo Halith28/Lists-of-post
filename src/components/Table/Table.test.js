@@ -2,21 +2,21 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import App from './App';
+import Table from '.';
 
 const mockStore = configureStore();
 
-describe('App', () => {
+describe('Table', () => {
   let store;
   const WrapperComponent = () => (
     <Provider store={store}>
-      <App />
+      <Table />
     </Provider>
   );
   beforeEach(() => {
     store = mockStore({
       pagination: {
-        pageCount: 10,
+        pageCount: 1,
         rowsPerPage: 10,
       },
       table: {
@@ -28,9 +28,9 @@ describe('App', () => {
       },
     });
   });
-  it('should have a header tag with React Table!', function () {
+  it('should render input properly', () => {
     render(<WrapperComponent />);
-    const searchInput = screen.queryByText('React Table');
+    const searchInput = screen.queryByTestId('table-comp');
     expect(searchInput).toBeDefined();
   });
 });
