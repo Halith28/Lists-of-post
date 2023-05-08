@@ -30,6 +30,7 @@ const Pagination = () => {
   return (
     <div className="pagination">
       <div>
+        {/* select is used to handle the rows per page */}
         <select
           defaultValue={rowsPerPage}
           onChange={handleRowsPerPage}
@@ -49,6 +50,7 @@ const Pagination = () => {
         <label>rows per page</label>
       </div>
       <div>
+        {/* Prev button will be disabled if we are in first page */}
         <button
           disabled={pageCount === rowsPerPage}
           onClick={() => handlePagination('PREV')}
@@ -57,6 +59,7 @@ const Pagination = () => {
           &lt; Prev
         </button>
         &nbsp;
+        {/* Prev button will be disabled if we are in last page */}
         <button
           disabled={
             searchedValue

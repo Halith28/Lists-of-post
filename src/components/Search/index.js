@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const Search = () => {
-  const { fetchedData } = useSelector((state) => state?.table);
+const Search = (props) => {
+  const { fetchedData } = props;
   const dispatch = useDispatch();
 
+  // this function is used to filter the data based on searched value"
   const handleInputSearch = (e) => {
     e.preventDefault();
     dispatch({ type: 'SEARCH_INPUT', payload: e.target[0].value });
@@ -13,6 +14,8 @@ const Search = () => {
     );
     dispatch({ type: 'FILTERED_DATA', payload: filteredData });
   };
+
+  // this function will retrieve all data if searched value is empty without clicking search button
   const handleInput = (e) => {
     if (e.target.value.length === 0) {
       dispatch({ type: 'SEARCH_INPUT', payload: '' });

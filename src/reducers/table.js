@@ -1,6 +1,7 @@
 const initState = {
   fetchedData: [],
   filteredData: [],
+  error: '',
 };
 const table = (state = initState, action) => {
   switch (action.type) {
@@ -13,6 +14,11 @@ const table = (state = initState, action) => {
       return {
         ...state,
         filteredData: action?.payload,
+      };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action?.payload,
       };
     default:
       return state;
